@@ -1,0 +1,70 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 5,
+        "sourceType": "module"
+    },
+    "env": {
+        "node": true,
+        "browser": true
+    },
+    "rules": {
+        "callback-return": "error",
+        "radix": "error",
+        "eqeqeq": ["error", "always"],
+        "comma-dangle": ["error", "never"],
+        "array-bracket-spacing": ["error", "never"],
+        "block-spacing": "error",
+        "brace-style": "error",
+        "camelcase": "error",
+        "comma-spacing": ["error", { "before": false, "after": true }],
+        "comma-style": ["error", "last"],
+        "computed-property-spacing": ["error", "never"],
+        "consistent-this": ["error", "that"],
+        "eol-last": "error",
+        "func-style": ["error", "expression"],
+        "indent": ["error", 4, { "VariableDeclarator": 1 }],
+        "key-spacing": [2, {
+            "singleLine": {
+                "beforeColon": false,
+                "afterColon": true
+            },
+            "multiLine": {
+                "beforeColon": false,
+                "afterColon": true,
+                "mode": "minimum"
+            }
+        }],
+        "keyword-spacing": ["error", { "before": true }],
+        "linebreak-style": ["error", "unix"],
+        "lines-around-comment": ["error", { "beforeLineComment": true, "allowBlockStart": true }],
+        "max-depth": ["error", 3],
+        "max-len": ["error", 120],
+        "max-params": ["error", 3],
+        "max-statements-per-line": ["error", { "max": 1 }],
+        "new-cap": ["error", { "newIsCap": true }],
+        "new-parens": "error",
+        "newline-after-var": ["error", "always"],
+        "newline-before-return": "error",
+        "no-inline-comments": "error",
+        "no-lonely-if": "error",
+        "no-mixed-spaces-and-tabs": "error",
+        "no-multiple-empty-lines": "error",
+        "no-nested-ternary": "error",
+        "no-spaced-func": "error",
+        "no-trailing-spaces": "error",
+        "no-unneeded-ternary": "error",
+        "no-unused-vars": ["error", { "vars": "all", "args": "after-used" }],
+        "no-whitespace-before-property": "error",
+        "object-curly-newline": ["error", {"minProperties": 1}],
+        "object-property-newline": "error",
+        "one-var": ["error", "always"],
+        "quotes": ["error", "single"],
+        "require-jsdoc": ["error"],
+        "semi": ["error", "always"],
+        "semi-spacing": ["error", {"before": false, "after": true}],
+        "space-before-blocks": "error",
+        "space-before-function-paren": ["error", "never"],
+        "space-in-parens": ["error", "never"], // can --fix
+        "space-infix-ops": "error"
+    }
+}
