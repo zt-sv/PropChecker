@@ -1,0 +1,28 @@
+{
+  "name": "propchecker",
+  "version": "0.0.0",
+  "description": "Minimalist JavaScript object validation library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "object",
+    "validator",
+    "validation",
+    "validate",
+    "checker",
+    "assert"
+  ],
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js"
+  ],
+  "author": "Aleksandr Zaytsev <13rentgen@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/13rentgen/PropChecker.git"
+  },
+  "license": "MIT"
+}
