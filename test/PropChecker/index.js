@@ -13,7 +13,18 @@ describe('Testing "lib/PropChecker"...', function() {
             invalid.forEach(function(value) {
                 expect(function() {
                     return new PropChecker(value);
-                }).to.throw(Error, 'Class PropChecker accept only function as argument');
+                }).to.throw(TypeError, 'Class PropChecker accept only function as argument');
+            });
+        });
+
+        it('should throw error, if construct without "new"', function() {
+            var
+                invalid = [].concat(nullAndUndef, numbers, strings, bool, objects, arrays, dates, errors, regexps, fns);
+
+            invalid.forEach(function(value) {
+                expect(function() {
+                    return PropChecker(value); // eslint-disable-line
+                }).to.throw(TypeError, 'Cannot call a class as a function');
             });
         });
 
