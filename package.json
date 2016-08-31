@@ -1,6 +1,6 @@
 {
   "name": "propchecker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Minimalist JavaScript object validation library",
   "main": "index.js",
   "scripts": {
