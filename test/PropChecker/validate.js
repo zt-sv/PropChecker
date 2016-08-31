@@ -15,7 +15,7 @@ describe('Testing method "validate" in "lib/PropChecker"...', function() {
         });
     });
 
-    describe('custom error handler', function () {
+    describe('custom error handler', function() {
         it('should throw an Error if error handler is not a function', function() {
             var
                 invalid = [].concat(strings, numbers, bool, objects, arrays, dates, errors, regexps);

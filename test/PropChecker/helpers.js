@@ -54,8 +54,6 @@ var
         }
     };
 
-'use strict';
-
 describe('Testing "lib/helpers"...', function() {
     describe('public methods', function() {
         it('should to have public methods: ' + Object.getOwnPropertyNames(staticMethods).map(function(method) {
