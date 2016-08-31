@@ -140,6 +140,14 @@ describe('Testing method "validate" in "lib/PropChecker"...', function() {
                     },
                     {
                         obj: {
+                            arr: [[1], [2, 3]]
+                        },
+                        conf: {
+                            arr: PropChecker.isArrayOf(PropChecker.isArrayOf(PropChecker.isNumber))
+                        }
+                    },
+                    {
+                        obj: {
                             foo: 'bar',
                             nested: {
                                 num: 1
