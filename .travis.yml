@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "0.10"
+  - "0.12"
+  - "1.8"
+  - "2.5"
+  - "3.3"
+  - "4.4"
+  - "5.11"
+  - "6.2"
+script:
+  - "npm run-script test-ci"
+after_script:
+  - "export CODACY_PROJECT_TOKEN=6288aff63ff049d2aec2b1d3770738be && npm install codacy-coverage && cat ./coverage/lcov.info | codacy-coverage"

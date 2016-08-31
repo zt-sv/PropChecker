@@ -1,0 +1,42 @@
+######################
+# OS generated files #
+######################
+.DS_Store
+.cache
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+.directory
+
+#####################################
+# Numerous always-ignore extensions #
+#####################################
+*.diff
+*.err
+*.orig
+*~
+
+########
+# Logs #
+########
+*.log
+
+#########
+# IDE's #
+#########
+.idea
+
+###########################
+# Node.js package manager #
+###########################
+node_modules
+
+#############
+# Coveralls #
+#############
+coverage
+
