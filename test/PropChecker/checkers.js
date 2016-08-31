@@ -77,13 +77,13 @@ describe('Testing checkers in "lib/PropChecker"...', function() {
         }
 
         describe('checker "' + method + '"', function() {
-            it(method + ' should return undefined with valid values', function() {
+            it(method + ' should return null with valid values', function() {
                 validValues.forEach(function(value) {
                     expect(function() {
                         return PropChecker[method].check(propName, value);
                     }).to.not.throw();
 
-                    expect(PropChecker[method].check(propName, value)).to.be.undefined;
+                    expect(PropChecker[method].check(propName, value)).to.be.null;
                 });
             });
 
@@ -145,7 +145,7 @@ describe('Testing checkers in "lib/PropChecker"...', function() {
             });
         });
 
-        it('isArrayOf should return undefined if array elements have compatible type', function() {
+        it('isArrayOf should return null if array elements have compatible type', function() {
             var
                 isArrayOfNumber = PropChecker.isArrayOf(PropChecker.isNumber),
                 isArrayOfArray = PropChecker.isArrayOf(PropChecker.isArray),
@@ -157,7 +157,7 @@ describe('Testing checkers in "lib/PropChecker"...', function() {
                     return isArrayOfNumber.check(propName, [value]);
                 }).to.not.throw();
 
-                expect(isArrayOfNumber.check(propName, [value])).to.be.undefined;
+                expect(isArrayOfNumber.check(propName, [value])).to.be.null;
             });
 
             strings.forEach(function(value) {
@@ -165,7 +165,7 @@ describe('Testing checkers in "lib/PropChecker"...', function() {
                     return isArrayOfString.check(propName, [value]);
                 }).to.not.throw();
 
-                expect(isArrayOfString.check(propName, [value])).to.be.undefined;
+                expect(isArrayOfString.check(propName, [value])).to.be.null;
             });
 
             objects.forEach(function(value) {
@@ -173,7 +173,7 @@ describe('Testing checkers in "lib/PropChecker"...', function() {
                     return isArrayOfObject.check(propName, [value]);
                 }).to.not.throw();
 
-                expect(isArrayOfObject.check(propName, [value])).to.be.undefined;
+                expect(isArrayOfObject.check(propName, [value])).to.be.null;
             });
 
             arrays.forEach(function(value) {
@@ -181,7 +181,7 @@ describe('Testing checkers in "lib/PropChecker"...', function() {
                     return isArrayOfArray.check(propName, [value]);
                 }).to.not.throw();
 
-                expect(isArrayOfArray.check(propName, [value])).to.be.undefined;
+                expect(isArrayOfArray.check(propName, [value])).to.be.null;
             });
         });
 
@@ -225,7 +225,7 @@ describe('Testing checkers in "lib/PropChecker"...', function() {
             });
         });
 
-        it('isEqual should no throw error and return undefined when values is equal', function() {
+        it('isEqual should no throw error and return null when values is equal', function() {
             var
                 valid = [].concat(strings, bool, objects, arrays, dates, fns);
 
@@ -234,7 +234,7 @@ describe('Testing checkers in "lib/PropChecker"...', function() {
                     return PropChecker.isEqual(value).check('test value', value);
                 }).to.not.throw();
 
-                expect(PropChecker.isEqual(value).check('test value', value)).to.be.undefined;
+                expect(PropChecker.isEqual(value).check('test value', value)).to.be.null;
             });
         });
 
