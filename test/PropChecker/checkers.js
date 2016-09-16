@@ -51,6 +51,10 @@ var PropChecker = require('../../lib/PropChecker'),
         'isEqual': {
             validValues: [],
             invalidValues: []
+        },
+        'isInherits': {
+            validValues: [],
+            invalidValues: []
         }
     };
 
@@ -102,7 +106,7 @@ describe('Testing checkers in "lib/PropChecker"...', function() {
     describe('checker "isArrayOf"', function() {
         it('isArrayOf should work with instance of PropChecker only', function() {
             var
-                except = ['isArrayOf', 'isEqual', 'isDeepEqual'],
+                except = ['isArrayOf', 'isEqual', 'isDeepEqual', 'isInherits'],
                 validValues = [];
 
             Object.getOwnPropertyNames(staticMethods).forEach(function(method) {
@@ -231,24 +235,95 @@ describe('Testing checkers in "lib/PropChecker"...', function() {
 
             valid.forEach(function(value) {
                 expect(function() {
-                    return PropChecker.isEqual(value).check('test value', value);
+                    return PropChecker.isEqual(value).check('testValue', value);
                 }).to.not.throw();
 
-                expect(PropChecker.isEqual(value).check('test value', value)).to.be.null;
+                expect(PropChecker.isEqual(value).check('testValue', value)).to.be.null;
             });
         });
 
         it('isEqual should return TypeError when values is not equal', function() {
             var
-                valid = [].concat(numbers, strings, bool, objects, arrays, dates, fns);
+                invalid = [].concat(numbers, strings, bool, objects, arrays, dates, fns);
 
-            valid.forEach(function(value) {
+            invalid.forEach(function(value) {
                 var
                     notEqualValue = 100500,
                     result        = PropChecker.isEqual(value).check(propName, notEqualValue);
 
                 expect(result).to.be.an.instanceof(TypeError);
                 expect(result.message).to.have.string('Property "' + propName + '" must be equal to "' + value + '"');
+            });
+        });
+    });
+
+    describe('checker "isInherits"', function() {
+        it('isInherits should accept only functions', function() {
+            var
+                validValues = [].concat(fns);
+
+            validValues.forEach(function(value) {
+                expect(function() {
+                    return PropChecker.isInherits(value);
+                }).to.not.throw();
+            });
+        });
+
+        it('isInherits should throw error with any non function value', function() {
+            var
+                invalidValues = [].concat(nullAndUndef, numbers, strings, bool, objects, arrays, dates);
+
+            invalidValues.forEach(function(value) {
+                expect(function() {
+                    return PropChecker.isInherits(value);
+                }).to.throw(TypeError, 'You should pass a Class function');
+            });
+        });
+
+        it('isInherits should no throw error and return null when values is inherits passed class', function() {
+            function BaseClass() {} // eslint-disable-line
+            function SomeClass() {} // eslint-disable-line
+
+            SomeClass.prototype = new BaseClass();
+
+            expect(function() {
+                return PropChecker.isInherits(BaseClass).check('testValue', SomeClass);
+            }).to.not.throw();
+
+            expect(PropChecker.isInherits(BaseClass).check('testValue', SomeClass)).to.be.null;
+        });
+
+        it('isInherits should throw error when values is not inherits passed class', function() {
+            var
+                result;
+
+            function BaseClass() {} // eslint-disable-line
+            function SomeClass() {} // eslint-disable-line
+            function ThirdClass() {} // eslint-disable-line
+
+            SomeClass.prototype = new BaseClass();
+
+            result = PropChecker.isInherits(BaseClass).check('testValue', ThirdClass);
+
+            expect(result).to.be.an.instanceof(TypeError);
+            expect(result.message).to.have.string('Property "testValue" must be inherits');
+        });
+
+        it('isInherits should throw error when values is not a class', function() {
+            var
+                invalidValues = [].concat(numbers, strings, bool, objects, arrays, dates);
+
+            function BaseClass() {} // eslint-disable-line
+            function SomeClass() {} // eslint-disable-line
+
+            SomeClass.prototype = new BaseClass();
+
+            invalidValues.forEach(function(value) {
+                var
+                    result = PropChecker.isInherits(BaseClass).check('testValue', value);
+
+                expect(result).to.be.an.instanceof(TypeError);
+                expect(result.message).to.have.string('Property "testValue" must be a class"');
             });
         });
     });

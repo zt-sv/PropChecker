@@ -45,37 +45,37 @@ PropChecker.validate(obj, config, errorHandler);
 
 ## Available checkers
 
-####isRequired####
+####isRequired
 Check the property value is not a null and not an undefined
 
-####isString####
+####isString
 Check the property value is a string
 
-####isNumber####
+####isNumber
 Check the property value is a number
 
-####isBoolean####
+####isBoolean
 Check the property value is a boolean
 
-####isArray####
+####isArray
 Check the property value is a number
 
-####isObject####
+####isObject
 Check the property value is an object
 
-####isDate####
+####isDate
 Check the property value is a date
 
-####isFunction####
+####isFunction
 Check the property value is a function
 
-####isRegExp####
+####isRegExp
 Check the property value is a regexp
 
-####isError####
+####isError
 Check the property value is a error
 
-####isArrayOf####
+####isArrayOf
 Check the property value is an array with specific elements type. Type specified through any PropChecker validator. Basic example:
 ```javascript
 var config = {
@@ -87,9 +87,11 @@ var obj = {
     arrayWithString: ['some string', 'another string'],
     arrayWithArrayWithNumbers: [[1], [2, 3], [4, 5]]
 };
+
+PropChecker.validate(obj, config);
 ```
 
-####isEqual####
+####isEqual
 Check the property value is equal to primitive, using strict equality operator inside. Basic example:
 ```javascript
 var config = {
@@ -99,8 +101,28 @@ var config = {
 var obj = {
     age: 18
 };
+
+PropChecker.validate(obj, config);
 ```
-####Not enough?####
+
+####isInherits
+Check the property value to inherits another class. Basic example:
+```javascript
+class BaseClass {}
+class AnotherOne extends BaseClass {}
+
+var config = {
+    some: PropChecker.isInherits(BaseClass)
+};
+
+var obj = {
+    some: AnotherOne
+};
+
+PropChecker.validate(obj, config);
+```
+
+####Not enough?
 You can define your own PropCheck validator. Type checker function should return null, when the value is valid, or an error instance, when the value is invalid. Basic example:
 ```javascript
 var myValidator = new PropChecker(function(propName, propValue) {
@@ -118,6 +140,8 @@ var config = {
 var obj = {
     age: 9
 };
+
+PropChecker.validate(obj, config);
 ```
 
 ## License
