@@ -91,7 +91,7 @@ var obj = {
 PropChecker.validate(obj, config);
 ```
 
-###isEqual
+### isEqual
 Check the property value is equal to primitive, using strict equality operator inside. Basic example:
 ```javascript
 var config = {
